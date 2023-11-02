@@ -1,0 +1,10 @@
+# Use the official PHP image as the base image
+FROM php:8-fpm
+
+
+# Install PDO and MySQL PDO extension
+RUN apt-get update && apt-get install -y libpq-dev
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
+
+
+# Sometimes docker holds previous build in cache if postgresql gives error (couldn't find driver) try to run docker-compose build
